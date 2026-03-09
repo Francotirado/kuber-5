@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+  namespace: default
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Домашнее задание к занятию «Настройка приложений и управление доступом в Kubernetes»</title>
+    </head>
+    <body>
+      <h1>Задание 1: Работа с ConfigMaps</h1>
+      <p>Задача: Развернуть приложение (nginx + multitool), решить проблему конфигурации через ConfigMap и подключить веб-страницу.</p>
+      <a href="https://github.com/Francotirado/kuber-5" target=_blank>Ссылка на мой репозиторий</a>
+    </body>
+    </html>
+  default.conf: |
+    server {
+      listen 80;
+      location / {
+        root /etc/nginx/conf.d;
+        index index.html;
+      }
+    }
